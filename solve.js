@@ -1,3 +1,4 @@
+// PowerKuz
 function getAll(){
     var opgs = document.getElementsByClassName('chapter-link partial-href');  
     return opgs 
@@ -63,3 +64,5 @@ function solve(){
     }
     postAnswer();
 };
+solve();
+// Run this in a JSconsole
