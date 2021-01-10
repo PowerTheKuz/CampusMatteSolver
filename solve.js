@@ -38,6 +38,7 @@ function getInfo(){
     var taskId = window.getParameterByName('taskId');
     var assignmentId = window.getParameterByName('assignmentId');
     var subId = global.subjectId;
+    console.log([Id, taskId, assignmentId, subId])
 
     return [Id, taskId, assignmentId, subId];
 };
@@ -45,16 +46,15 @@ function getInfo(){
 function postAnswer(){
     var info = getInfo();
 
+    $x('//*[@id="CampusContext_'+String(info[1])+'"]/div[1]/div[4]')[0].innerText = getAnswer().replace('"answers":', '').replace('{["', '').replace('"]}', '')
     var data = {
-        assignmentId: info[2],
         answer: getAnswer(),
         assignmentNodeId: info[1],
         result: 100,
         latency: 100
     };
 
-    var r = $.post('/Assignment2/StoreAssignment/' + String(info[3]), data);
-    console.log(r);
+    var r = $.post('/Assignment2/StoreAssignment/' + String(info[0]), data);
 };
 
 function solve(){
